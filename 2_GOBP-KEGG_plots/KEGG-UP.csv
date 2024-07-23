@@ -1,0 +1,10 @@
+TermID	Term	Count	PValue	List Total	Pop Hits	Pop Total	Fold Enrichment	Genes
+dre04115	p53 signaling pathway	9	7.0649E-05	118	91	7632	6.40	gadd45bb,, gadd45aa, sesn3, baxa, sesn1, mdm2, cdk21, gadd45ga, tp53
+dre04068	FoxO signaling pathway	10	1.8494E-03	118	182	7632	3.55	rbl2, plk3, gadd45bb, gadd45aa, mdm2, foxo3b, cdkn1ba, sgk1, gadd45ga, bcl6ab
+dre04210	Apoptosis	9	1.2535E-02	118	203	7632	2.87	parp3, gadd45bb, gadd45aa, fosab, fosaa, baxa, gadd45ga, tp53, prf1.9
+dre04060	Cytokine-cytokine receptor interaction	9	2.0949E-02	118	223	7632	2.61	cxcr3.1, il1rl1, bmp2b, il1b, si:dkey-204l11.1, il11a, il12a, epoa, il13ra1
+dre04010	MAPK signaling pathway 	13	2.5209E-02	118	416	7632	2.02	jund, cacng4a, fgf2, igf2a, gadd45bb, gadd45aa, rps6ka3a, fosab, cdc42l2, fosaa, il1b, gadd45ga, tp53
+dre04110	Cell cycle	8	2.7139E-02	118	191	7632	2.71	rbl2, gadd45bb, gadd45aa, mdm2, cdk21, cdkn1ba, gadd45ga, tp53
+dre04218	Cellular senescence	8	3.4478E-02	118	201	7632	2.57	rbl2, gadd45bb, gadd45aa, mdm2, cdk21, foxo3b, gadd45ga, tp53
+dre04744	Phototransduction	4	3.8843E-02	118	49	7632	5.28	grk7b, rcvrn3, pde6a, grk1a
+dre00100	Steroid biosynthesis	3	4.4087E-02	118	22	7632	8.82	cyp24a1, cyp2r1, cel.2

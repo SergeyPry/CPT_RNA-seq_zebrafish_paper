@@ -1,0 +1,13 @@
+sampleName	genotype	treatment
+wt_DMSO1	wildtype	DMSO
+wt_DMSO2	wildtype	DMSO
+wt_DMSO3	wildtype	DMSO
+wt_CPT1	wildtype	CPT
+wt_CPT2	wildtype	CPT
+wt_CPT3	wildtype	CPT
+mir34a_del_DMSO1	mir34a_deletion	DMSO
+mir34a_del_DMSO2	mir34a_deletion	DMSO
+mir34a_del_DMSO3	mir34a_deletion	DMSO
+mir34a_del_CPT1	mir34a_deletion	CPT
+mir34a_del_CPT2	mir34a_deletion	CPT
+mir34a_del_CPT3	mir34a_deletion	CPT

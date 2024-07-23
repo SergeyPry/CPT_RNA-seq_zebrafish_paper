@@ -1,0 +1,5 @@
+name	genotype	treatment
+wt - DMSO	wildtype	DMSO
+wt - CPT	wildtype	CPT
+miR-34a_del - DMSO	mir34a_deletion	DMSO
+miR-34a_del - CPT	mir34a_deletion	CPT
