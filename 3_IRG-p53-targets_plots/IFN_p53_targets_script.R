@@ -130,7 +130,7 @@ ifn_genes <- as.vector(ifn_genes$Gene_name)
 
 # add gene symbols to the count data table and 
 # convert v4.3.2 IDs to gene symbols
-ID_symbol_map <- read.csv("v4_3_2geneinfo.txt", sep = '\t')
+ID_symbol_map <- read.csv("../v4_3_2geneinfo.txt", sep = '\t')
 row.names(ID_symbol_map) <- ID_symbol_map$LLgeneID
 
 results_full$symbol <- ID_symbol_map[row.names(results_full), ]$LLgeneSymbol
@@ -225,5 +225,91 @@ pheatmap(mat_every3[56:114,c("wt - DMSO", "miR-34a_del - DMSO",   "wt - CPT",  "
          cluster_cols = FALSE, cluster_rows = FALSE, treeheight_row = 0, annotation_col = anno, fontsize = 8,
          color=colorRampPalette(c("navy", "white", "red"))(50))
 
+####################### p53 target genes ######################################
 
+p53_targets <- read.csv("zebrafish_p53_targets.csv")
+p53_targets_symbols <- p53_targets$x
+
+
+# 2. subset this list based on whether a gene was differentially expressed in the full dataset
+# under conditions of fold change > 2 and P-value < 0.05
+
+p53_targets_inData <- intersect(results_full$symbol, p53_targets_symbols)
+p53_targets_inData
+
+# save the dataset
+write.xlsx(results_full[results_full$symbol %in% p53_targets_inData,], "regulated_p53-targets_data.xlsx", sheetName="Sheet1", col.names=TRUE, row.names=TRUE, append=FALSE)
+
+################## number of IFN genes in the whole dataset ###################
+count_data3 <- count_data
+
+count_data2$symbol <- ID_symbol_map[row.names(count_data), ]$LLgeneSymbol
+
+count_data <- count_data[, c(13,1:12)]
+head(count_data)
+
+IFN_regulated_all <- intersect(count_data$symbol, ifn_genes)
+IFN_regulated_all
+
+###############################################################################
+
+
+mat  <- assay(vsd_full)
+mat  <- mat - rowMeans(mat)
+mat <-as.data.frame(mat)
+
+mat$symbol <- ID_symbol_map[row.names(mat), ]$LLgeneSymbol
+
+mat <- mat[mat$symbol %in% p53_targets_inData,]
+
+# fixed duplication of one value
+mat <- mat[c(1:112, 114:132),]
+
+rownames(mat) <- mat$symbol
+
+mat <- as.matrix(mat[,c(1:12)])
+
+anno <- as.data.frame(colData(vsd_full)[, c("genotype","treatment")])
+
+pheatmap(mat, method="complete", 
+         annotation_col = anno, show_rownames = T, 
+         annotation_legend = TRUE, legend=T, 
+         cluster_cols=TRUE,
+         treeheight_row = 0, treeheight_col = 0, fontsize = 8,
+         color=colorRampPalette(c("navy", "white", "red"))(50))
+
+
+# average columns
+mat_every3 <- t(apply(mat, 1, tapply, gl(4, 3), mean))
+
+colnames(mat_every3) <- c("wt - DMSO", "wt - CPT", "miR-34a_del - DMSO", "miR-34a_del - CPT" )
+colnames(mat_every3)
+
+
+annoTable <- read.csv("anno_table.csv", sep = "\t")
+rownames(annoTable) <- annoTable$name
+rownames(annoTable)
+annoTable$genotype <- factor(annoTable$genotype, levels = c("wildtype","mir34a_deletion"))
+annoTable$treatment <- factor(annoTable$treatment, levels = c( "DMSO", "CPT"))
+anno <- annoTable[, c( "treatment", "genotype")]
+
+anno <- anno %>% arrange(treatment)
+
+mat_every3 <- mat_every3[order(mat_every3[,2], decreasing = TRUE),]
+
+# splits used for the figure
+pheatmap(mat_every3[1:50,c("wt - DMSO", "miR-34a_del - DMSO",   "wt - CPT",  "miR-34a_del - CPT")], 
+         cellwidth = 25, cellheight = 10, treeheight_col = 0, scale = 'row',
+         cluster_cols = FALSE, cluster_rows = FALSE, treeheight_row = 0, annotation_col = anno, fontsize = 8,
+         color=colorRampPalette(c("navy", "white", "red"))(50))
+
+pheatmap(mat_every3[51:100,c("wt - DMSO", "miR-34a_del - DMSO",   "wt - CPT",  "miR-34a_del - CPT")], 
+         cellwidth = 25, cellheight = 10, treeheight_col = 0, scale = 'row',
+         cluster_cols = FALSE, cluster_rows = FALSE, treeheight_row = 0, annotation_col = anno, fontsize = 8,
+         color=colorRampPalette(c("navy", "white", "red"))(50))
+
+pheatmap(mat_every3[101:131,c("wt - DMSO", "miR-34a_del - DMSO",   "wt - CPT",  "miR-34a_del - CPT")], 
+         cellwidth = 25, cellheight = 10, treeheight_col = 0, scale = 'row',
+         cluster_cols = FALSE, cluster_rows = FALSE, treeheight_row = 0, annotation_col = anno, fontsize = 8,
+         color=colorRampPalette(c("navy", "white", "red"))(50))
 
