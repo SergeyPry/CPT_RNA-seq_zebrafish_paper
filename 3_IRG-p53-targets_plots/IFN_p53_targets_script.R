@@ -243,13 +243,13 @@ write.xlsx(results_full[results_full$symbol %in% p53_targets_inData,], "regulate
 ################## number of IFN genes in the whole dataset ###################
 count_data3 <- count_data
 
-count_data2$symbol <- ID_symbol_map[row.names(count_data), ]$LLgeneSymbol
+count_data3$symbol <- ID_symbol_map[row.names(count_data3), ]$LLgeneSymbol
 
-count_data <- count_data[, c(13,1:12)]
-head(count_data)
+count_data3 <- count_data3[, c(13,1:12)]
+head(count_data3)
 
-IFN_regulated_all <- intersect(count_data$symbol, ifn_genes)
-IFN_regulated_all
+p53_targets_regulated_all <- intersect(count_data3$symbol, p53_targets_symbols)
+p53_targets_regulated_all
 
 ###############################################################################
 
