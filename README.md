@@ -3,10 +3,10 @@
 A repository with the code, data and figures for the manuscript under consideration at "Data in Brief".
 This repository contains the following parts 
 
-** 1. RNA-seq mapping protocol description.**
-** 2. R code for the differential expression quantification by DESeq2 as well as for the full dataset heatmap and MA plot.**
-** 3. R code for plotting barplots of Gene Ontology Biological Process and KEGG pathway terms.**
-** 4. R code for identifying Interferon-regulated genes and p53 target genes followed by plotting their expression heatmaps.**
+1. **RNA-seq mapping protocol description.**
+2. **R code for the differential expression quantification by DESeq2 as well as for the full dataset heatmap and MA plot.**
+3. **R code for plotting barplots of Gene Ontology Biological Process and KEGG pathway terms.**
+4. **R code for identifying Interferon-regulated genes and p53 target genes followed by plotting their expression heatmaps.**
 
 
 
