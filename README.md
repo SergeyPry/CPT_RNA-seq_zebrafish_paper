@@ -1,6 +1,6 @@
 ## Repository for "A dataset of transcriptomic effects of camptothecin treatment on early zebrafish embryos"
 
-A repository with the code, data and figures for the manuscript under consideration at "Data in Brief".
+A repository with the code, data and figures for the [paper published in "Data in Brief"](https://pubmed.ncbi.nlm.nih.gov/39554546/).
 This repository contains the following parts 
 
 1. **RNA-seq mapping protocol description.**
